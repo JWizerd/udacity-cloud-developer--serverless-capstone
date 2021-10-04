@@ -1,0 +1,435 @@
+{
+	"info": {
+		"_postman_id": "a953e6a4-26fc-4b43-9d8a-05a2713f9661",
+		"name": "School:Udacity:Cloud-Developer-Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Notes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "6wc1bwwih6.execute-api.us-west-1.amazonaws.com"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Sidekick\";v=\"90\""
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+					},
+					{
+						"key": "origin",
+						"value": "http://localhost:3000"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "http://localhost:3000/"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					}
+				],
+				"url": {
+					"raw": "{{serverless_endpoint}}/notes",
+					"host": [
+						"{{serverless_endpoint}}"
+					],
+					"path": [
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Note",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "6wc1bwwih6.execute-api.us-west-1.amazonaws.com"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Sidekick\";v=\"90\""
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+					},
+					{
+						"key": "origin",
+						"value": "http://localhost:3000"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "http://localhost:3000/"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"here is a sample note title\",\n    \"description\": \"here is a sample note description\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverless_endpoint}}/notes",
+					"host": [
+						"{{serverless_endpoint}}"
+					],
+					"path": [
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Note",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authority",
+						"value": "6wc1bwwih6.execute-api.us-west-1.amazonaws.com"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Sidekick\";v=\"90\""
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+					},
+					{
+						"key": "origin",
+						"value": "http://localhost:3000"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "http://localhost:3000/"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"here is an updated sample note title\",\n    \"description\": \"here is a sample note description\",\n    \"attachmentUrl\": \"https://notes-attachments-bucket-dev.s3.us-west-1.amazonaws.com/33461ac6-637b-4b65-b8ff-02394aaa1a20\",\n    \"pinned\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverless_endpoint}}/notes/1c0eae26-c2bb-4d20-9e22-6f96eb343913",
+					"host": [
+						"{{serverless_endpoint}}"
+					],
+					"path": [
+						"notes",
+						"1c0eae26-c2bb-4d20-9e22-6f96eb343913"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Note Attachment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "6wc1bwwih6.execute-api.us-west-1.amazonaws.com"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Sidekick\";v=\"90\""
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+					},
+					{
+						"key": "origin",
+						"value": "http://localhost:3000"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "http://localhost:3000/"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"here is an updated sample note title\",\n    \"description\": \"here is a sample note description\",\n    \"attachmentUrl\": \"https://notes-attachments-bucket-dev.s3.us-west-1.amazonaws.com/33461ac6-637b-4b65-b8ff-02394aaa1a20\",\n    \"pinned\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverless_endpoint}}/notes/1c0eae26-c2bb-4d20-9e22-6f96eb343913/attachment",
+					"host": [
+						"{{serverless_endpoint}}"
+					],
+					"path": [
+						"notes",
+						"1c0eae26-c2bb-4d20-9e22-6f96eb343913",
+						"attachment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Note",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authority",
+						"value": "6wc1bwwih6.execute-api.us-west-1.amazonaws.com"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Sidekick\";v=\"90\""
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+					},
+					{
+						"key": "origin",
+						"value": "http://localhost:3000"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "cross-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "http://localhost:3000/"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-US,en;q=0.9"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"here is an updated sample note title\",\n    \"description\": \"here is a sample note description\",\n    \"attachmentUrl\": \"https://notes-attachments-bucket-dev.s3.us-west-1.amazonaws.com/33461ac6-637b-4b65-b8ff-02394aaa1a20\",\n    \"pinned\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{serverless_endpoint}}/notes/1c0eae26-c2bb-4d20-9e22-6f96eb343913",
+					"host": [
+						"{{serverless_endpoint}}"
+					],
+					"path": [
+						"notes",
+						"1c0eae26-c2bb-4d20-9e22-6f96eb343913"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "YOUR JWT TOKEN HERE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "serverless_endpoint",
+			"value": "https://6wc1bwwih6.execute-api.us-west-1.amazonaws.com/dev"
+		}
+	]
+}
