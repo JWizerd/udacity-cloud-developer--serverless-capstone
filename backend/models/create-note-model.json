@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "group",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 10
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10
+    },
+    "attachmentUrl": {
+      "type": "string",
+      "minLength": 10
+    },
+    "pinned": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "title",
+    "description"
+  ],
+  "additionalProperties": false
+}
