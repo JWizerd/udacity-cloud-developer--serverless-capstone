@@ -5,11 +5,11 @@
   "properties": {
     "title": {
       "type": "string",
-      "minLength": 10
+      "minLength": 5
     },
     "description": {
       "type": "string",
-      "minLength": 10
+      "minLength": 5
     },
     "attachmentUrl": {
       "type": "string",
