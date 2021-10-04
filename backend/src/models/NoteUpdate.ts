@@ -1,4 +1,4 @@
-export interface TodoUpdate {
+export interface NoteUpdate {
   title: string
   description: string
   attachmentUr ?: string

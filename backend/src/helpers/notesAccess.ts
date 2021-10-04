@@ -5,7 +5,7 @@ import { NoteItem } from "../models/NoteItem";
 export default class NoteAccess {
   constructor(
     private readonly client: DocumentClient = createDynamoDBClient(),
-    private readonly table: string = process.env.TODOS_TABLE
+    private readonly table: string = process.env.NOTES_TABLE
   ) { }
 
   async findAll(userId: string): Promise<NoteItem[]> {
@@ -13,7 +13,7 @@ export default class NoteAccess {
       ExpressionAttributeValues: {
         ':userId': userId
       },
-      IndexName: process.env.TODO_LOCAL_SECONDARY_INDEX_NAME,
+      IndexName: process.env.NOTE_LOCAL_SECONDARY_INDEX_NAME,
       KeyConditionExpression: 'userId = :userId',
       TableName: this.table
     };
@@ -45,7 +45,7 @@ export default class NoteAccess {
   }
 
   async findOne(noteId: string, userId: string): Promise<NoteItem> {
-    const todo = await this.client.get({
+    const note = await this.client.get({
       TableName: this.table,
       Key: {
         noteId,
@@ -53,7 +53,7 @@ export default class NoteAccess {
       }
     }).promise();
 
-    return todo.Item as NoteItem;
+    return note.Item as NoteItem;
   }
 
   async update(noteId: string, NoteItem: NoteItem, userId: string): Promise<NoteItem> {

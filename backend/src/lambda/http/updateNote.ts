@@ -14,8 +14,8 @@ export const handler = middy(
     try {
       const userId = getUserId(event);
       const noteId = event.pathParameters.noteId;
-      const updatedTodo: UpdateNoteRequest = JSON.parse(event.body);
-      const result = await updateNote(noteId, updatedTodo, userId);
+      const updatedNote: UpdateNoteRequest = JSON.parse(event.body);
+      const result = await updateNote(noteId, updatedNote, userId);
       logger.info(logStatements.update.success, result);
 
       return {

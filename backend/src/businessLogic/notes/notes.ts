@@ -11,6 +11,7 @@ export const createNote = async (noteItem: CreateNoteRequest, userId: string): P
     noteId: uuid.v4(),
     createdAt: new Date().toISOString(),
     attachmentUrl: noteItem.attachmentUrl || "",
+    pinned: false,
     userId,
     ...noteItem,
   } as NoteItem;

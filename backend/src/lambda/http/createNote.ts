@@ -13,10 +13,10 @@ export const handler = middy(
     const logger = createLogger(logStatements.create.name);
 
     try {
-      const newTodo: CreateNoteRequest = JSON.parse(event.body);
-      logger.info(logStatements.create.success, newTodo);
+      const newNote: CreateNoteRequest = JSON.parse(event.body);
+      logger.info(logStatements.create.success, newNote);
       const userId = getUserId(event);
-      const result = await createNote(newTodo, userId);
+      const result = await createNote(newNote, userId);
 
       return {
         statusCode: 201,

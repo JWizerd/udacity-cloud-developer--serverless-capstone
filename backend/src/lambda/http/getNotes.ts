@@ -13,11 +13,11 @@ export const handler = middy(
     try {
       logger.info(logStatements.findAll.success, event);
       const userId = getUserId(event);
-      const todos = await getNotesForUser(userId);
+      const notes = await getNotesForUser(userId);
 
       return {
         statusCode: 200,
-        body: JSON.stringify({ items: todos })
+        body: JSON.stringify({ items: notes })
       }
     } catch (error) {
       logger.error(logStatements.findAll.error, error);

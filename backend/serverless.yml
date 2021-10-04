@@ -1,4 +1,4 @@
-service: serverless-todo-app
+service: udacity-keep-clone
 
 plugins:
   - serverless-webpack
@@ -35,7 +35,7 @@ provider:
   runtime: nodejs12.x
 
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'us-east-1'}
+  region: ${opt:region, 'us-west-1'}
 
   tracing:
     apiGateway: true
@@ -53,7 +53,6 @@ functions:
     environment:
       AUTH0_JWKS_ENDPOINT: 'https://dev-dl7xpde6.us.auth0.com/.well-known/jwks.json'
 
-  # TODO: Configure this function
   GetNotes:
     handler: src/lambda/http/getNotes.handler
     iamRoleStatements:
@@ -68,12 +67,12 @@ functions:
     events:
       - http:
           method: get
-          path: todos
+          path: notes
           cors: true
           authorizer: Auth
 
-  GetTodo:
-    handler: src/lambda/http/getTodo.handler
+  GetNote:
+    handler: src/lambda/http/getNote.handler
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -82,13 +81,12 @@ functions:
     events:
       - http:
           method: get
-          path: todos/{noteId}
+          path: notes/{noteId}
           cors: true
           authorizer: Auth
 
-  # TODO: Configure this function
-  CreateTodo:
-    handler: src/lambda/http/createTodo.handler
+  CreateNote:
+    handler: src/lambda/http/createNote.handler
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -97,19 +95,18 @@ functions:
     events:
       - http:
           method: post
-          path: todos
+          path: notes
           cors: true
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
           documentation:
-            summary: Create a new todo
-            description: Create a new todo
+            summary: Create a new note
+            description: Create a new note
             requestModels:
-              'application/json': TodoCreateRequest
+              'application/json': NoteCreateRequest
 
-  # TODO: Configure this function
-  UpdateTodo:
-    handler: src/lambda/http/updateTodo.handler
+  UpdateNote:
+    handler: src/lambda/http/updateNote.handler
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -118,19 +115,18 @@ functions:
     events:
       - http:
           method: patch
-          path: todos/{noteId}
+          path: notes/{noteId}
           cors: true
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
           documentation:
-            summary: Update a new todo
-            description: Update a new todo
+            summary: Update a new note
+            description: Update a new note
             requestModels:
-              'application/json': TodoUpdateRequest
+              'application/json': NoteUpdateRequest
 
-  # TODO: Configure this function
-  DeleteTodo:
-    handler: src/lambda/http/deleteTodo.handler
+  DeleteNote:
+    handler: src/lambda/http/deleteNote.handler
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -139,11 +135,10 @@ functions:
     events:
       - http:
           method: delete
-          path: todos/{noteId}
+          path: notes/{noteId}
           cors: true
           authorizer: Auth
 
-  # TODO: Configure this function
   GenerateUploadUrl:
     handler: src/lambda/http/generateUploadUrl.handler
     environment:
@@ -156,7 +151,7 @@ functions:
     events:
       - http:
           method: post
-          path: todos/{noteId}/attachment
+          path: notes/{noteId}/attachment
           cors: true
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
@@ -210,7 +205,7 @@ resources:
         ValidateRequestBody: true
         ValidateRequestParameters: false
 
-    TodoAttachmentsBucket:
+    NoteAttachmentsBucket:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:provider.environment.NOTE_ATTACHMENTS_S3_BUCKET}
@@ -229,7 +224,7 @@ resources:
                 - HEAD
               MaxAge: 3000
 
-    TodoAttachmentsBucketPolicy:
+    NoteAttachmentsBucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
         PolicyDocument:
@@ -241,4 +236,4 @@ resources:
               Principal: '*'
               Action: 's3:GetObject'
               Resource: 'arn:aws:s3:::${self:provider.environment.NOTE_ATTACHMENTS_S3_BUCKET}/*'
-        Bucket: !Ref TodoAttachmentsBucket
+        Bucket: !Ref NoteAttachmentsBucket

@@ -1,10 +1,8 @@
-export interface NoteItem {
-  userId: string
+export interface Note {
   noteId: string
   createdAt: string
-  updatedAt: string
   title: string
   description: string
-  pinned: boolean
+  pinned?: boolean
   attachmentUrl?: string
 }

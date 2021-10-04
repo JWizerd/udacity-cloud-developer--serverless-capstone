@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import Auth from '../auth/Auth'
-import { getTodo, getUploadUrl, patchTodo, uploadFile } from '../api/todos-api'
-import { Todo } from '../types/Todo'
-import { UpdateTodoRequest } from '../types/UpdateTodoRequest'
+import { getNote, getUploadUrl, patchNote, uploadFile } from '../api/notes-api'
+import { Note } from '../types/Note'
+import { UpdateNoteRequest } from '../types/UpdateNoteRequest'
 
 enum UploadState {
   NoUpload,
@@ -11,7 +11,7 @@ enum UploadState {
   UploadingFile,
 }
 
-interface EditTodoProps {
+interface EditNoteProps {
   match: {
     params: {
       noteId: string
@@ -20,24 +20,24 @@ interface EditTodoProps {
   auth: Auth
 }
 
-interface EditTodoState {
+interface EditNoteState {
   file: any
   uploadState: UploadState
-  todo: Todo | undefined
+  note: Note | undefined
 }
 
-export class EditTodo extends React.PureComponent<
-  EditTodoProps,
-  EditTodoState
+export class EditNote extends React.PureComponent<
+  EditNoteProps,
+  EditNoteState
 > {
-  state: EditTodoState = {
+  state: EditNoteState = {
     file: undefined,
     uploadState: UploadState.NoUpload,
-    todo: undefined
+    note: undefined
   }
 
   async componentDidMount() {
-    this.state.todo = await getTodo(this.props.auth.getIdToken(), this.props.match.params.noteId);
+    this.state.note = await getNote(this.props.auth.getIdToken(), this.props.match.params.noteId);
   }
 
   handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,8 +65,8 @@ export class EditTodo extends React.PureComponent<
       this.setUploadState(UploadState.UploadingFile)
       await uploadFile(uploadUrl, this.state.file)
 
-      const updatedTodo = { ...this.state.todo, attachmentUrl } as UpdateTodoRequest;
-      await patchTodo(this.props.auth.getIdToken(), this.props.match.params.noteId, updatedTodo)
+      const updatedNote = { ...this.state.note, attachmentUrl } as UpdateNoteRequest;
+      await patchNote(this.props.auth.getIdToken(), this.props.match.params.noteId, updatedNote)
 
       alert('File was uploaded!')
     } catch (e) {
